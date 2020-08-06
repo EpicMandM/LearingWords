@@ -19,39 +19,9 @@ namespace LearingWords
     /// </summary>
     public partial class RangeWindow : Window
     {
-        private MainWindow window;
-        public void Enable(bool flag)
+        public RangeWindow()
         {
-            label.IsEnabled = flag;
-            label1.IsEnabled = flag;
-            textBox.IsEnabled = flag;
-            textBox1.IsEnabled = flag;
-        }
-        public RangeWindow(MainWindow window)
-        {
-            this.window = window;
             InitializeComponent();
-
-        }
-
-        private void radioButton1_Checked(object sender, RoutedEventArgs e)
-        {
-            Enable(true);
-            window.RWFlag = true;
-        }
-
-        private void radioButton_Checked(object sender, RoutedEventArgs e)
-        {
-            Enable(false);
-            window.RWFlag = false;
-            textBox.Text = null;
-            textBox1.Text = null;
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if ((textBox1.Text != null && textBox.Text != null) && (textBox1.Text != string.Empty && textBox.Text != string.Empty))
-                window.ChangeRange(int.Parse(textBox.Text), int.Parse(textBox1.Text));
         }
     }
 }

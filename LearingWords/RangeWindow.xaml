@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:LearingWords"
         mc:Ignorable="d"
         Title="Choose a range" Height="141.376" Width="195.688">
-    <Grid>
+    <Grid Unloaded="Grid_Unloaded">
         <Label x:Name="label" Content="From:" HorizontalAlignment="Left" Margin="9,37,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.683,1.385" IsEnabled="False"/>
         <Label x:Name="label1" Content="To:" HorizontalAlignment="Left" Margin="19,62,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.225,0.824" IsEnabled="False"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="49,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
         <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="49,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
         <RadioButton x:Name="radioButton" Content="OFF" HorizontalAlignment="Left" Margin="19,10,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <RadioButton x:Name="radioButton1" Content="ON" HorizontalAlignment="Left" Margin="78,10,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="radioButton1" Content="ON" HorizontalAlignment="Left" Margin="78,10,0,0" VerticalAlignment="Top" Checked="radioButton1_Checked"/>
 
     </Grid>
 </Window>

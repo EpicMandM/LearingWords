@@ -19,11 +19,31 @@ namespace LearingWords
     /// </summary>
     public partial class RangeWindow : Window
     {
+        private void Enable(bool flag)
+        {
+            label.IsEnabled = flag;
+            label1.IsEnabled = flag;
+            textBox.IsEnabled = flag;
+            textBox1.IsEnabled = flag;
+        }
         private MainWindow window;
         public RangeWindow(MainWindow window)
         {
             InitializeComponent();
             this.window = window;
+        }
+
+        private void radioButton1_Checked(object sender, RoutedEventArgs e)
+        {
+            Enable(true);
+        }
+
+        private void Grid_Unloaded(object sender, RoutedEventArgs e)
+        {
+            if(radioButton1.IsChecked ?? false)
+            {
+
+            }
         }
     }
 }

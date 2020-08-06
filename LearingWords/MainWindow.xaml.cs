@@ -109,5 +109,10 @@ namespace LearingWords
                 Clear();
             }
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            new RangeWindow(this).Show();
+        }
     }
 }

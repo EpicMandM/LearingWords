@@ -19,9 +19,11 @@ namespace LearingWords
     /// </summary>
     public partial class RangeWindow : Window
     {
-        public RangeWindow()
+        private MainWindow window;
+        public RangeWindow(MainWindow window)
         {
             InitializeComponent();
+            this.window = window;
         }
     }
 }

@@ -58,7 +58,7 @@ namespace LearingWords
                 {
                     if (int.Parse(textBox.Text) > int.Parse(textBox1.Text) || int.Parse(textBox.Text) < 0 || int.Parse(textBox1.Text) < 0)
                         throw new ArgumentException();
-                    window.ChangeRange(int.Parse(textBox.Text), int.Parse(textBox1.Text));
+                    window.ChangeRange(int.Parse(textBox.Text) < 2 ? 2 : int.Parse(textBox.Text), int.Parse(textBox1.Text));
 
                 }
                 catch (Exception)
@@ -72,6 +72,7 @@ namespace LearingWords
             else
             {
                 window.RangeUsingFlag = false;
+                window.SetDefault();
             }
         }
 

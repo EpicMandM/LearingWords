@@ -38,7 +38,6 @@ namespace LearingWords
         int index = 2;
         ExcelWorksheet ws;
         public bool RangeUsingFlag { get; set; }
-        public int Count { get; set; }
         public int CurrentMax { get; set; }
         public int CurrentMin { get; set; }
         public bool IsRandomized { get; set; }
@@ -46,7 +45,7 @@ namespace LearingWords
         {
             ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
             InitializeComponent();
-            Count = 300;
+            CurrentMax = 300;
             UpdateWord();
         }
         private void UpdateWord()
@@ -62,7 +61,7 @@ namespace LearingWords
                 var p = new ExcelPackage(fi);
                 //Get the Worksheet created in the previous codesample. 
                 ws = p.Workbook.Worksheets["MainList"];
-                index = new Random().Next(0, Count);
+                index = new Random().Next(CurrentMin, CurrentMax);
                 label1.Content = ws.Cells[index, 1].Value;
                 //The style object is used to access most cells formatting and styles.
                 //ws.Cells[2, 1].Style.Font.Bold = true;
@@ -88,6 +87,11 @@ namespace LearingWords
             CurrentMin = min;
             CurrentMax = max;
             UpdateWord();
+        }
+        public void SetDefault()
+        {
+            CurrentMin = 0;
+            CurrentMax = 300;
         }
         private void Clear()
         {

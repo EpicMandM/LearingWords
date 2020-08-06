@@ -42,8 +42,13 @@ namespace LearingWords
         {
             if(radioButton1.IsChecked ?? false)
             {
-
+                window.ChangeRange(int.Parse(textBox.Text), int.Parse(textBox1.Text));
             }
+        }
+
+        private void radioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            Enable(false);
         }
     }
 }

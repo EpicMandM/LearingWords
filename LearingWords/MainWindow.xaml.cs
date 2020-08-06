@@ -37,6 +37,8 @@ namespace LearingWords
     {
         int index = 2;
         ExcelWorksheet ws;
+        public bool RangeUsingFlag { get; set; }
+        public int Max { get; set; }
         public MainWindow()
         {
             ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
@@ -61,6 +63,12 @@ namespace LearingWords
             //Save and close the package.
 
         }
+        public void ChangeRange(int min, int max)
+        {
+            index = min;
+            Max = max;
+            UpdateWord();
+        }
         private void Clear()
         {
             textBox.Text = string.Empty;
@@ -73,7 +81,7 @@ namespace LearingWords
             {
                 bool flag = false;
                 UpdateWord();
-                if(Convert.ToString(ws.Cells[index, (int)Positions.PastTense].Value).Contains(textBox.Text))
+                if(Convert.ToString(ws.Cells[index, (int)Positions.PastTense].Value).Contains(textBox.Text) && textBox.Text != "")
                 {
                     flag = true;
                 }
@@ -82,7 +90,7 @@ namespace LearingWords
                     labelerror1.Content = Int32.Parse(labelerror1.Content.ToString()) + 1;
                     flag = false;
                 }
-                if (Convert.ToString(ws.Cells[index, (int)Positions.PastParticiple].Value).Contains(textBox2.Text))
+                if (Convert.ToString(ws.Cells[index, (int)Positions.PastParticiple].Value).Contains(textBox2.Text) && textBox2.Text != "")
                 {
                     flag = flag && true;
                 }
@@ -91,7 +99,7 @@ namespace LearingWords
                     labelerror2.Content = Int32.Parse(labelerror2.Content.ToString()) + 1;
                     flag = false;
                 }
-                if (Convert.ToString(ws.Cells[index, (int)Positions.Value].Value).Contains(textBox3.Text))
+                if (Convert.ToString(ws.Cells[index, (int)Positions.Value].Value).Contains(textBox3.Text) && textBox3.Text != "")
                 {
                     flag = flag && true;
                 }

@@ -31,6 +31,12 @@ namespace LearingWords
         {
             InitializeComponent();
             this.window = window;
+            if(window.RangeUsingFlag)
+            {
+                radioButton1.IsChecked = true;
+                textBox.Text = Convert.ToString(window.Min);
+                textBox1.Text = Convert.ToString(window.Max);
+            }
         }
 
         private void radioButton1_Checked(object sender, RoutedEventArgs e)
@@ -42,7 +48,21 @@ namespace LearingWords
         {
             if(radioButton1.IsChecked ?? false)
             {
-                window.ChangeRange(int.Parse(textBox.Text), int.Parse(textBox1.Text));
+                window.RangeUsingFlag = true;
+                try
+                {
+
+                    window.ChangeRange(int.Parse(textBox.Text), int.Parse(textBox1.Text));
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Вы ввели некорректный диапазон!");
+                }
+            }
+            else
+            {
+                window.RangeUsingFlag = false;
             }
         }
 

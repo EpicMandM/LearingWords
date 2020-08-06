@@ -39,6 +39,7 @@ namespace LearingWords
         ExcelWorksheet ws;
         public bool RangeUsingFlag { get; set; }
         public int Max { get; set; }
+        public int Min { get; set; }
         public MainWindow()
         {
             ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
@@ -66,6 +67,7 @@ namespace LearingWords
         public void ChangeRange(int min, int max)
         {
             index = min;
+            Min = min;
             Max = max;
             UpdateWord();
         }

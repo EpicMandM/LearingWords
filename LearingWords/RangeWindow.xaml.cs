@@ -25,6 +25,11 @@ namespace LearingWords
             label1.IsEnabled = flag;
             textBox.IsEnabled = flag;
             textBox1.IsEnabled = flag;
+            if(!flag)
+            {
+                textBox.Text = string.Empty;
+                textBox1.Text = string.Empty;
+            }
         }
         private MainWindow window;
         public RangeWindow(MainWindow window)
@@ -58,6 +63,8 @@ namespace LearingWords
                 {
 
                     MessageBox.Show("Вы ввели некорректный диапазон!");
+                    radioButton.IsChecked = true;
+                    window.RangeUsingFlag = false;
                 }
             }
             else

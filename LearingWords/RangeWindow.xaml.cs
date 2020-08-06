@@ -39,8 +39,8 @@ namespace LearingWords
             if(window.RangeUsingFlag)
             {
                 radioButton1.IsChecked = true;
-                textBox.Text = Convert.ToString(window.Min);
-                textBox1.Text = Convert.ToString(window.Max);
+                textBox.Text = Convert.ToString(window.CurrentMin);
+                textBox1.Text = Convert.ToString(window.CurrentMax);
             }
         }
 

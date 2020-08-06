@@ -24,6 +24,7 @@
             </MenuItem>
             <MenuItem Header="Settings" Click="MenuItem_Click">
                 <ListBoxItem Content="Choose a range"/>
+                <CheckBox Content="Randomize" Checked="CheckBox_Checked"/>
             </MenuItem>
             <MenuItem Header="About" Click="MenuItem_Click_1"/>
         </Menu>

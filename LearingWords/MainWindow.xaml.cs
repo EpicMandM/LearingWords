@@ -38,13 +38,15 @@ namespace LearingWords
         int index = 2;
         ExcelWorksheet ws;
         public bool RangeUsingFlag { get; set; }
-        public int Max { get; set; }
-        public int Min { get; set; }
+        public int Count { get; set; }
+        public int CurrentMax { get; set; }
+        public int CurrentMin { get; set; }
+        public bool IsRandomized { get; set; }
         public MainWindow()
         {
             ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
             InitializeComponent();
-
+            Count = 300;
             UpdateWord();
         }
         private void UpdateWord()
@@ -54,21 +56,37 @@ namespace LearingWords
             //Get the Worksheet created in the previous codesample. 
             ////                    элемент/столбик
             ///lvar fi = new FileInfo(@"f:\words.xlsx");
-            var fi = new FileInfo(@"f:\words.xlsx");
-            var p = new ExcelPackage(fi);
-            //Get the Worksheet created in the previous codesample. 
-            ws = p.Workbook.Worksheets["MainList"];
-            label1.Content = ws.Cells[index, 1].Value;
-            //The style object is used to access most cells formatting and styles.
-            //ws.Cells[2, 1].Style.Font.Bold = true;
-            //Save and close the package.
+            if(IsRandomized)
+            {
+                var fi = new FileInfo(@"f:\words.xlsx");
+                var p = new ExcelPackage(fi);
+                //Get the Worksheet created in the previous codesample. 
+                ws = p.Workbook.Worksheets["MainList"];
+                index = new Random().Next(0, Count);
+                label1.Content = ws.Cells[index, 1].Value;
+                //The style object is used to access most cells formatting and styles.
+                //ws.Cells[2, 1].Style.Font.Bold = true;
+                //Save and close the package.
+            }
+            else
+            {
+                var fi = new FileInfo(@"f:\words.xlsx");
+                var p = new ExcelPackage(fi);
+                //Get the Worksheet created in the previous codesample. 
+                ws = p.Workbook.Worksheets["MainList"];
+                label1.Content = ws.Cells[index, 1].Value;
+                //The style object is used to access most cells formatting and styles.
+                //ws.Cells[2, 1].Style.Font.Bold = true;
+                //Save and close the package.
+
+            }
 
         }
         public void ChangeRange(int min, int max)
         {
             index = min;
-            Min = min;
-            Max = max;
+            CurrentMin = min;
+            CurrentMax = max;
             UpdateWord();
         }
         private void Clear()
@@ -81,8 +99,7 @@ namespace LearingWords
         {
             if (e.Key == Key.Enter)
             {
-                bool flag = false;
-                UpdateWord();
+                bool flag;
                 if(Convert.ToString(ws.Cells[index, (int)Positions.PastTense].Value).Contains(textBox.Text) && textBox.Text != "")
                 {
                     flag = true;
@@ -114,7 +131,8 @@ namespace LearingWords
                 {
                     labelerrormain.Content = Int32.Parse(labelerrormain.Content.ToString()) + 1;
                 }
-                index++;
+                if(!IsRandomized)
+                    index++;
                 UpdateWord();
                 Clear();
             }
@@ -133,6 +151,12 @@ namespace LearingWords
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            IsRandomized = true;
+            UpdateWord();
         }
     }
 }

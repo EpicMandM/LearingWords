@@ -23,7 +23,7 @@
             <MenuItem Header="Settings" Click="MenuItem_Click">
                 <ListBoxItem Content="Choose a range"/>
             </MenuItem>
-            <MenuItem Header="About"/>
+            <MenuItem Header="About" Click="MenuItem_Click_1"/>
         </Menu>
 
     </Grid>

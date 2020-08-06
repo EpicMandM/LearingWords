@@ -124,5 +124,10 @@ namespace LearingWords
         {
             new RangeWindow(this).Show();
         }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("The program was created by Vladyslav Zhukov for simple learning Irregular Verbs. ", "About", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK);
+        }
     }
 }

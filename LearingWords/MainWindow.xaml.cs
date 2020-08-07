@@ -45,7 +45,7 @@ namespace LearingWords
         {
             ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
             InitializeComponent();
-            CurrentMax = 300;
+            CurrentMax = 277;
             UpdateWord();
         }
         private void UpdateWord()
@@ -57,7 +57,7 @@ namespace LearingWords
             ///lvar fi = new FileInfo(@"f:\words.xlsx");
             if(IsRandomized)
             {
-                var fi = new FileInfo(@"f:\words.xlsx");
+                var fi = new FileInfo(@".\words.xlsx");
                 var p = new ExcelPackage(fi);
                 //Get the Worksheet created in the previous codesample. 
                 ws = p.Workbook.Worksheets["MainList"];
@@ -69,7 +69,7 @@ namespace LearingWords
             }
             else
             {
-                var fi = new FileInfo(@"f:\words.xlsx");
+                var fi = new FileInfo(@".\words.xlsx");
                 var p = new ExcelPackage(fi);
                 //Get the Worksheet created in the previous codesample. 
                 ws = p.Workbook.Worksheets["MainList"];
@@ -91,7 +91,7 @@ namespace LearingWords
         public void SetDefault()
         {
             CurrentMin = 0;
-            CurrentMax = 300;
+            CurrentMax = 277;
         }
         private void Clear()
         {
